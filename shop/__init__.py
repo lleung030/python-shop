@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 
 # # create the extension
 # db = SQLAlchemy()
@@ -12,6 +13,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///myshop.db'
+app.config['SECRET_KEY'] = 'ouehdvouiqernhhvoweirn'
 db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
 
 from shop.admin import routes
