@@ -143,7 +143,7 @@ def addproduct():
         discount = form.discount.data
         stock = form.stock.data
         colors = form.colors.data
-        desc = form.discription.data
+        desc = form.description.data
         brand = request.form.get('brand')
         category = request.form.get('category')
         image_1 = photos.save(request.files.get('image_1'), name=secrets.token_hex(10) + ".")
