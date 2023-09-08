@@ -1,6 +1,5 @@
 from flask import render_template,session, request,redirect,url_for,flash,current_app
-from shop import app, db, photos 
-# , search
+from shop import app,db,photos, search
 from .models import Category,Brand,Addproduct
 from .forms import Addproducts
 import secrets
@@ -21,7 +20,7 @@ def categories():
 def home():
     page = request.args.get('page',1, type=int)
     products = Addproduct.query.filter(Addproduct.stock > 0).order_by(Addproduct.id.desc()).paginate(page=page, per_page=8)
-    return render_template('tml', products=products,brands=brands(),categories=categories())
+    return render_template('products/index.html', products=products,brands=brands(),categories=categories())
 
 @app.route('/result')
 def result():
@@ -143,7 +142,7 @@ def addproduct():
         discount = form.discount.data
         stock = form.stock.data
         colors = form.colors.data
-        desc = form.description.data
+        desc = form.discription.data
         brand = request.form.get('brand')
         category = request.form.get('category')
         image_1 = photos.save(request.files.get('image_1'), name=secrets.token_hex(10) + ".")
