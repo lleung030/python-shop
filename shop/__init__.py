@@ -5,7 +5,7 @@ from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_cl
 import os
 
 # from flask_msearch import Search
-# from flask_login import LoginManager
+from flask_login import LoginManager
 # from flask_migrate import Migrate
 
 basedir = os.path.abspath(os.path.dirname(__file__))
