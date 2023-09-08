@@ -1,4 +1,4 @@
-from shop import db, login_manager
+from shop import db, login_manager, app
 from datetime import datetime
 from flask_login import UserMixin
 import json
@@ -51,8 +51,8 @@ class CustomerOrder(db.Model):
         return'<CustomerOrder %r>' % self.invoice
 
 
-
-db.create_all()
+with app.app_context():
+    db.create_all()
 
 
 
